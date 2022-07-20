@@ -1,0 +1,38 @@
+.banner {
+  font-size: 50px;
+  text-align: center;
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: bold;
+}
+
+hr {
+  height: 2px;
+  background-color: #ffc107;
+  margin: 0;
+  opacity: 1;
+}
+
+a {
+  text-decoration: none;
+}
+
+.fake {
+  color: white;
+}
+
+.store {
+  color: #212529;
+  background-color: #ffc107;
+  border-radius: 10px;
+}
+
+.d-flex {
+  font-size: 20px;
+}
+
+svg {
+  background-color: #ffc107;
+}
+header {
+  padding: 5px !important;
+}

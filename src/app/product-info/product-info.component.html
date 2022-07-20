@@ -1,0 +1,25 @@
+<meta charset="UTF-8" />
+<div class="grid-container">
+  <div class="grid-item">
+    <img class="bd-placeholder-img card-img-top" [src]="product.image" />
+  </div>
+  <div class="grid-item">
+    <div class="infobody">
+      <p>{{ product.title }}</p>
+      <p class="description">{{ product.description }}</p>
+      <p>⭐{{ product.rating.rate }} / 5</p>
+    </div>
+
+    <p>{{ product.price | currency: "EUR" }}</p>
+
+    <div>
+      <button
+        type="button"
+        class="btn btn-warning"
+        (click)="addToCart(product)"
+      >
+        To Cart
+      </button>
+    </div>
+  </div>
+</div>

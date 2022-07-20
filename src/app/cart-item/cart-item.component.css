@@ -1,0 +1,36 @@
+.row {
+  color: white;
+  font-size: 25px;
+}
+
+hr {
+  height: 1px;
+  background-color: #ffc107;
+  margin: 10px;
+  opacity: 1;
+}
+
+.cartimage {
+  width: auto;
+  height: 50px;
+}
+
+svg {
+  background-color: #ffc107;
+}
+
+button {
+  margin: 1px;
+}
+
+.xd {
+  padding: 1px;
+}
+
+.descr {
+  font-size: 20px;
+}
+
+img {
+  border: 2px solid #ffc107;
+}

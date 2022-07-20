@@ -1,0 +1,41 @@
+.grid-container {
+  margin-left: 3%;
+  margin-right: 3%;
+  margin-top: 3%;
+  display: grid;
+  grid-template-columns: auto auto auto;
+  padding: 10px;
+  border: 1px solid;
+  border-color: #ffc107;
+  border-radius: 10px;
+  height: 100%;
+}
+
+.grid-item {
+  padding: 20px;
+  font-size: 30px;
+  float: right;
+  color: white;
+  float: right;
+  text-align: right;
+}
+
+img {
+  height: 400px;
+  width: auto;
+  float: left;
+  border: 2px solid #ffc107;
+}
+
+.description {
+  font-size: 20px;
+  float: right !important;
+}
+
+.infobody {
+  height: 75%;
+}
+
+.priceinfo {
+  height: 100px;
+}
