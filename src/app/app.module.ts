@@ -9,8 +9,8 @@ import { ProductComponent } from './product/product.component';
 import { ProductInfoComponent } from './product-info/product-info.component';
 import { SearchComponent } from './search/search.component';
 import { CartComponent } from './cart/cart.component';
-import { AboutComponent } from './about/about.component';
 import { CartItemComponent } from './cart-item/cart-item.component';
+import { SearchItemComponent } from './search-item/search-item.component';
 
 @NgModule({
   declarations: [
@@ -20,8 +20,8 @@ import { CartItemComponent } from './cart-item/cart-item.component';
     ProductInfoComponent,
     SearchComponent,
     CartComponent,
-    AboutComponent,
     CartItemComponent,
+    SearchItemComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, HttpClientModule],
   providers: [],

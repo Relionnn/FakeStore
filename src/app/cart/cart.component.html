@@ -1,4 +1,6 @@
-<div *ngIf="items.size === 0">Your Cart is Empty.</div>
+<div class="emptyCart" *ngIf="items.size === 0">
+  <div class="emptyTxt">Your Cart is Empty :(</div>
+</div>
 
 <div *ngIf="items.size > 0" class="spacing">
   <div *ngFor="let item of items.values()">

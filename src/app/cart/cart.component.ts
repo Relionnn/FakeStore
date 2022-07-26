@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Product } from '../iproducts';
+import { Product } from '../Interfaces/product.interface';
 import { ProductService } from '../product.service';
 
 @Component({
@@ -10,22 +10,24 @@ import { ProductService } from '../product.service';
 export class CartComponent implements OnInit {
   items = new Map<number, Product>();
   totalPrice: number = 0;
-  quantity: number = 1;
 
   constructor(private productService: ProductService) {}
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.getItems();
-    console.log(this.quantity);
-    this.getTotalPrice();
+    this.productService.getPersistedItems();
   }
 
   private getItems(): void {
     this.productService.items$.subscribe((products: Product[]) => {
       const newProducts = new Map();
+      this.totalPrice = 0;
 
       products.forEach((product: Product) => {
         newProducts.set(product.id, product);
+
+        this.totalPrice += product.quantity * product.price;
+        console.log('totalPrice', this.totalPrice);
       });
 
       this.items = newProducts;
@@ -35,29 +37,4 @@ export class CartComponent implements OnInit {
   clearCart() {
     this.items = new Map();
   }
-
-  getTotalPrice() {
-    this.items.forEach((item) => {
-      this.totalPrice += item.price * this.quantity;
-    });
-  }
 }
-
-// ngOnInit(): void {
-//   const persistedItems: Product[] = JSON.parse(
-//     localStorage.getItem('cart') || ''
-//   );
-//   let itemsToMap: Product[];
-
-//   if (persistedItems.length) {
-//     itemsToMap = persistedItems;
-//   } else {
-//     itemsToMap = this.productService.getItems();
-//   }
-
-//   itemsToMap.forEach((product: Product) => {
-//     this.items.set(product.id, product);
-//   });
-
-//   localStorage.setItem('cart', JSON.stringify([...this.items.values()]));
-// }

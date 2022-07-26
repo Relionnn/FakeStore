@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { Product } from '../iproducts';
+import { CartItem } from '../Interfaces/product.interface';
 import { ProductService } from '../product.service';
 
 @Component({
@@ -8,27 +8,21 @@ import { ProductService } from '../product.service';
   styleUrls: ['./cart-item.component.css'],
 })
 export class CartItemComponent implements OnInit {
-  @Input() item: Product;
-  quantity = 1;
+  @Input() item: CartItem;
 
   constructor(private productService: ProductService) {}
 
   ngOnInit(): void {}
 
   removeItem() {
-    let currentItem = this.item;
-    this.productService.removeItem(currentItem);
+    this.productService.removeAllItems(this.item.id);
   }
 
   quantityUp() {
-    return this.quantity++;
+    this.productService.addToCart(this.item);
   }
 
   quantityDown() {
-    if (this.quantity >= 2) {
-      return this.quantity--;
-    } else {
-      return this.removeItem();
-    }
+    this.productService.removeItem(this.item.id);
   }
 }
