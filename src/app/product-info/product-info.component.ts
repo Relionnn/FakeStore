@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { Product } from '../iproducts';
+import { Product } from '../Interfaces/product.interface';
 import { ProductService } from '../product.service';
 
 @Component({
@@ -20,6 +20,7 @@ export class ProductInfoComponent implements OnInit {
       rate: 0,
       count: 0,
     },
+    quantity: 0,
   };
 
   constructor(

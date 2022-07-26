@@ -1,5 +1,6 @@
 .row {
   color: white;
+
   font-size: 25px;
 }
 
@@ -37,4 +38,9 @@ img {
 
 .descr:hover {
   cursor: pointer;
+}
+
+.cat {
+  font-size: 18px;
+  text-transform: uppercase;
 }

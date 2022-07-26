@@ -2,7 +2,12 @@
   <div class="col-md-1 themed-grid-col">
     <img class="cartimage" [src]="item.image" />
   </div>
-  <div class="col-md-5 themed-grid-col descr">{{ item.title }}</div>
+  <div
+    class="col-md-5 themed-grid-col descr"
+    [routerLink]="'/product-info/' + item.id"
+  >
+    {{ item.title }}
+  </div>
   <div class="col-md-2 themed-grid-col"></div>
   <div class="col-md-1 themed-grid-col">
     <button type="button" class="btn btn-warning xd" (click)="quantityUp()">
@@ -35,10 +40,10 @@
         />
       </svg>
     </button>
-    {{ quantity }}
+    {{ item.quantity }}
   </div>
   <div class="col-md-2 themed-grid-col">
-    {{ quantity * item.price | currency: "EUR" }}
+    {{ item.quantity * item.price | currency: "EUR" }}
   </div>
   <div class="col-md-1 themed-grid-col">
     <button type="button" class="btn btn-warning" (click)="removeItem()">
