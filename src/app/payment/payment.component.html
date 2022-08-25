@@ -1,0 +1,55 @@
+<div class="container">
+  <div class="row">
+    <div class="col-sm">
+      <app-card
+        [name]="cardForm.value.name"
+        [cardNumber]="cardForm.value.cardNumber"
+        [expiration]="cardForm.value.expiration"
+      ></app-card>
+    </div>
+    <div class="col-sm">
+      <form [formGroup]="cardForm" (ngSubmit)="onSubmit()">
+        <app-input
+          inputType="text"
+          label="Name"
+          [control]="cardForm.controls.name | formControlPipe"
+        ></app-input>
+        <app-input
+          inputType="text"
+          label="Card Number"
+          [control]="cardForm.controls.cardNumber | formControlPipe"
+          [mask]="maskNumber"
+        ></app-input>
+        <div class="row">
+          <div class="col-sm">
+            <app-input
+              inputType="text"
+              label="Expiration (MM/YY)"
+              [control]="cardForm.controls.expiration | formControlPipe"
+            ></app-input>
+          </div>
+          <div class="col-sm">
+            <app-input
+              inputType="text"
+              label="Security Code"
+              [control]="cardForm.controls.securityCode | formControlPipe"
+              [mask]="maskSecurity"
+            ></app-input>
+          </div>
+        </div>
+        <div>
+          <button type="submit" class="btn btn-warning xd">Submit</button>
+          <button
+            type="button"
+            class="btn btn-outline-light me-2"
+            (click)="onResetClick()"
+          >
+            Reset
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<!-- [disabled]="cardForm.invalid" -->

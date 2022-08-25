@@ -27,7 +27,6 @@ export class CartComponent implements OnInit {
         newProducts.set(product.id, product);
 
         this.totalPrice += product.quantity * product.price;
-        console.log('totalPrice', this.totalPrice);
       });
 
       this.items = newProducts;

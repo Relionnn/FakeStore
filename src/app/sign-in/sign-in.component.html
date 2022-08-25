@@ -1,0 +1,35 @@
+<body class="text-center">
+  <main class="form-signin w-100 m-auto">
+    <div class="banner bg-dark">
+      <a routerLink="/products"
+        ><span class="fake">Fake</span><span class="store">store </span>
+      </a>
+    </div>
+    <form [formGroup]="authForm" (ngSubmit)="onSubmit()">
+      <app-input
+        inputType="text"
+        label="Username"
+        [control]="authForm.controls.username | formControlPipe"
+      ></app-input>
+      <app-input
+        inputType="password"
+        label="Password"
+        [control]="authForm.controls.password | formControlPipe"
+      ></app-input>
+
+      <div class="checkbox mb-2">
+        <label>
+          <input type="checkbox" value="remember-me" /> Remember me
+        </label>
+      </div>
+      <button class="btn btn-warning" type="submit">Login</button>
+      <div *ngIf="authForm.errors" class="error">
+        <p *ngIf="authForm.errors['credentials']">Try again</p>
+        <p *ngIf="authForm.errors['noConnection']">
+          Check your internet connection
+        </p>
+      </div>
+    </form>
+    <div>Don't have an account?<a routerLink="/sign-up"> Sign-up</a></div>
+  </main>
+</body>

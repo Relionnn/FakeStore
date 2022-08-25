@@ -14,6 +14,7 @@ export class SearchComponent implements OnInit {
   filteredDownPrice: Product[] = [];
   filteredUpPrice: Product[] = [];
   filteredProductsByCategory: Product[] = [];
+  filteredProductsByTitle: Product[] = [];
   buttons = Buttons;
 
   constructor(private productService: ProductService) {}
@@ -37,6 +38,7 @@ export class SearchComponent implements OnInit {
         this.filteredDownPrice =
         this.filteredUpPrice =
         this.filteredProductsByCategory =
+        this.filteredProductsByTitle =
           data;
     });
   }
@@ -94,13 +96,29 @@ export class SearchComponent implements OnInit {
     );
     this.allFilteredProducts();
   }
+  filterByTitle(event: Event) {
+    let query = (event.target as HTMLInputElement)?.value.trim();
+
+    if (!query) {
+      this.filteredProductsByTitle = this.products;
+      return;
+    }
+
+    this.filteredProductsByTitle = this.products.filter((product: Product) =>
+      product.title.toLowerCase().includes(query.toLowerCase())
+    );
+    this.allFilteredProducts();
+  }
 
   allFilteredProducts() {
     let filteredPrice = this.filteredDownPrice.filter((o1) =>
       this.filteredUpPrice.some((o2) => o1.id === o2.id)
     );
-    this.filteredProducts = filteredPrice.filter((o1) =>
+    let filteredTitleAndClass = this.filteredProductsByTitle.filter((o1) =>
       this.filteredProductsByCategory.some((o2) => o1.id === o2.id)
+    );
+    this.filteredProducts = filteredPrice.filter((o1) =>
+      filteredTitleAndClass.some((o2) => o1.id === o2.id)
     );
     console.log(this.filteredProducts);
   }
@@ -117,5 +135,8 @@ export class SearchComponent implements OnInit {
     } else {
       return this.filteredProducts;
     }
+  }
+  resetAll() {
+    this.ngOnInit();
   }
 }
