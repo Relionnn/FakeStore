@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpBackend, HttpClient } from '@angular/common/http';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { CartItem, Product } from './Interfaces/product.interface';
 
@@ -9,18 +9,21 @@ import { CartItem, Product } from './Interfaces/product.interface';
 export class ProductService {
   items: CartItem[] = [];
   items$: BehaviorSubject<CartItem[]> = new BehaviorSubject(this.items);
+  private customHttpClient: HttpClient;
 
   url = 'https://fakestoreapi.com/products';
 
-  constructor(private http: HttpClient) {}
+  constructor(backend: HttpBackend) {
+    this.customHttpClient = new HttpClient(backend);
+  }
 
   getProducts(): Observable<Product[]> {
-    return this.http.get<Product[]>(this.url);
+    return this.customHttpClient.get<Product[]>(this.url);
   }
 
   getProduct(id: number): Observable<Product> {
     const urlNew = `${this.url}/${id}`;
-    return this.http.get<Product>(urlNew);
+    return this.customHttpClient.get<Product>(urlNew);
   }
 
   addToCart(item: CartItem) {
@@ -35,7 +38,6 @@ export class ProductService {
     }
 
     this.propagateChanges();
-    // window.alert('Your product has been added to the cart!');
   }
 
   getItems() {

@@ -5,6 +5,7 @@
   margin-top: 40px;
   margin-left: 5px;
   margin-right: 5px;
+  width: 180p;
 }
 
 .btn-primary {
@@ -25,7 +26,7 @@
 
 img {
   width: auto;
-  max-width: 200px;
+  max-width: 164px;
   height: auto;
   max-height: 200px;
   min-height: 150px;
@@ -36,6 +37,18 @@ img {
 }
 
 .product-text {
-  height: 100px;
-  overflow: hidden;
+  height: 88px;
+  overflow: hidden !important;
+}
+
+.card-body {
+  font-size: 14px;
+  padding-top: 0px;
+}
+
+.btn {
+  font-size: 10px;
+}
+
+.card-text {
 }

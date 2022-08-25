@@ -1,0 +1,21 @@
+<label>{{ label }}</label>
+<input
+  [type]="inputType"
+  [formControl]="control"
+  class="form-control form-control-dark text-white bg-dark"
+  placeholder="{{ label }}"
+  [mask]="mask"
+/>
+<div *ngIf="showErrors()" class="error">
+  <p *ngIf="control.errors?.['required']">{{ label }} is required</p>
+  <p *ngIf="control.errors?.['minlength']">
+    {{ label }} must be at least
+    {{ control.errors?.["minlength"].requiredLength }} characters
+  </p>
+  <p *ngIf="control.errors?.['maxlength']">
+    {{ label }} cannot be longer than
+    {{ control.errors?.["maxlength"].requiredLength }} characters
+  </p>
+  <p *ngIf="control.errors?.['pattern']">Invalid format</p>
+  <p *ngIf="control.errors?.['nonUniqueUserName']">Username is taken</p>
+</div>

@@ -1,0 +1,10 @@
+:host {
+  display: block;
+  margin-bottom: 1em;
+  text-align: left;
+}
+
+.error {
+  color: red;
+  text-align: center;
+}

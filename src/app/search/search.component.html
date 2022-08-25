@@ -15,42 +15,50 @@
             {{ button.category }}
           </button>
         </div>
-        <form
-          class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3 last"
-          role="search"
-        >
-          <input
-            type="text"
-            class="form-control form-control-dark text-white bg-dark"
-            placeholder="Min price..."
-            aria-label="Search"
-            onkeydown="return ((47<event.keyCode && event.keyCode<58 && event.shiftKey==false) || (event.keyCode==8)  || (event.keyCode==9) || (event.keyCode==46) || (event.keyCode==190) )"
-            (keyup)="filterProductsByDownPriceRange($event)"
-          />
-        </form>
-
-        <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3" role="search">
-          <input
-            type="text"
-            class="form-control form-control-dark text-white bg-dark"
-            placeholder="Max price..."
-            aria-label="Search"
-            (keyup)="filterProductsByUpPriceRange($event)"
-            onkeydown="return ((47<event.keyCode && event.keyCode<58 && event.shiftKey==false) || (event.keyCode==8)  || (event.keyCode==9) || (event.keyCode==46) || (event.keyCode==190) )"
-          />
-        </form>
       </ul>
+      <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3 last" role="search">
+        <input
+          type="text"
+          class="form-control form-control-dark text-white bg-dark"
+          placeholder="Min price..."
+          aria-label="Search"
+          onkeydown="return ((47<event.keyCode && event.keyCode<58 && event.shiftKey==false) || (event.keyCode==8)  || (event.keyCode==9) || (event.keyCode==46) || (event.keyCode==190) )"
+          (keyup)="filterProductsByDownPriceRange($event)"
+        />
+      </form>
+
+      <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3" role="search">
+        <input
+          type="text"
+          class="form-control form-control-dark text-white bg-dark"
+          placeholder="Max price..."
+          aria-label="Search"
+          (keyup)="filterProductsByUpPriceRange($event)"
+          onkeydown="return ((47<event.keyCode && event.keyCode<58 && event.shiftKey==false) || (event.keyCode==8)  || (event.keyCode==9) || (event.keyCode==46) || (event.keyCode==190) )"
+        />
+      </form>
+      <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3" role="search">
+        <input
+          type="text"
+          class="form-control form-control-dark text-white bg-dark titleSearch"
+          placeholder="Search..."
+          aria-label="Search"
+          onkeydown="return (event.keyCode!=13);"
+          (keyup)="filterByTitle($event)"
+        />
+      </form>
+
       <form
         class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3 sortby"
         role="search"
       >
         <select
-          class="form-control form-control-dark text-white bg-dark"
+          class="form-control form-control-dark text-white bg-dark sorting"
           (change)="sortBy($event)"
         >
           <option value="" selected disabled hidden>Sort by</option>
-          <option value="PriceUp">Lowest Price</option>
-          <option value="PriceDown">Highest Price</option>
+          <option value="PriceUp">Price Up</option>
+          <option value="PriceDown">Price Down</option>
           <option value="Alfabetical">Alfabetical</option>
         </select>
       </form>
@@ -58,8 +66,8 @@
   </div>
 </header>
 <hr />
-<div class="spacing">
-  <div *ngFor="let product of filteredProducts">
-    <app-search-item [product]="product"></app-search-item>
+<div class="row prod">
+  <div class="col-md-2" *ngFor="let product of filteredProducts">
+    <app-product [product]="product"></app-product>
   </div>
 </div>

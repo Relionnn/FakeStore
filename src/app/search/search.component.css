@@ -18,7 +18,7 @@ input {
 }
 
 .last {
-  margin-left: 70px !important;
+  margin-left: 50px !important;
 }
 
 .sortby {
@@ -33,4 +33,16 @@ input {
 .xd:hover {
   background-color: #ffc107;
   color: #212529;
+}
+
+.titleSearch {
+  width: 160px;
+  margin-left: 0px;
+  margin-right: 0px;
+  border-color: #ffc107;
+}
+
+.prod {
+  margin-left: 94.6px;
+  margin-right: 94.6px;
 }
